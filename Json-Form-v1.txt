@@ -1,0 +1,67 @@
+
+Server (Example)
+
+1. 程式名稱  	 
+   簡寫: Discourse 	 
+   全名: A Unified RvNN Framework for End-to-End Chinese Discourse Parsing  
+
+2. 作者/單位
+   Chuan-An Lin, Hen-Hsen Huang, Zi-Yuan Chen and Hsin-Hsi Chen  
+   台灣大學資訊系     
+
+3. 程式功能
+   Chinese discourse parser              
+   中文語篇剖析器
+
+4. 程式功能說明 -文字描述(中英文均可) & pdf檔
+   
+   中文語篇剖析有四項子任務，包含初級語篇單元分割、 
+剖析樹建立、主次關係識別、語篇關係辨識等。 
+本文展示一個點對點中文語篇剖析器，並提出一套統一架構， 
+可以對輸入之中文篇章直接產生完整的中文語篇剖析結果。 
+我們的剖析器以遞迴類神經網路為基礎，同時對四項子任務進行學習， 
+在中文語篇樹庫(CDTB)資料集上，達到最先進的效能。 
+我們釋出了這個剖析器的原始碼與預先訓練完成的模型， 
+立即可用。據我們所知，這是第一個開放原始碼的中文剖析工具集， 
+而且這套獨立的工具集不須依賴外部資源(如句法剖析器)，
+便於下游應用的整合。        
+ 
+ http://nlg18.csie.ntu.edu.tw/discourse_parser 
+ http://aclweb.org/anthology/C18-2016      
+ 
+5. 程式源碼
+   https://github.com/abccaba2000/discourse-parser  
+
+6. 程式類別
+   NLP, Discourse, 遞迴類神經網路  
+
+7. 執行程式所需要的資料集, 語料庫等等的資源
+
+    名稱	                     連結	                       收費
+--------------------------------------------------------------------
+WordNet	             https://wordnet.princeton.edu/	      免費
+中文語篇樹庫（CDTB）	www.cs.brandeis.edu/~clp/cdtb/	     免費
+
+8. 執行程式所需要的系統環境及套件  
+   Windows/Linux 
+   Python, Tensorflow, Standford Chinese Parser  
+
+9. 程式是否可以接受輸入檔, 將結果儲存至輸出檔      
+   v可  - (繼續填寫下面問題)         
+    不可 - (結束)   
+
+10. 程式接受的輸入/輸出格式 
+    輸入格式: 文件-純文字格式
+    輸出格式: 樹狀結構-HTML格式
+
+11. 程式在被執行時是否需要輸入參數
+    v要  - (繼續填寫下面問題)       
+     不要 - (結束)  
+
+12. 參數的功能說明 以及 參數是否是有範圍(Range)   
+
+參數	   範圍(range)	 功能	           格式 
+---------------------------------------------
+-demo	 無	          畫出HTML圖檔	   -demo
+-r	     0 ~ 100	   調整樹的深度	   -r:50 
+
