@@ -7,6 +7,8 @@ const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+const Router = require('./router')
+
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(app.env === 'production')
@@ -14,6 +16,7 @@ config.dev = !(app.env === 'production')
 async function start() {
   // Instantiate nuxt.js
   const nuxt = new Nuxt(config)
+  const router = Router(nuxt)
 
   // Build in development
   if (config.dev) {
@@ -21,6 +24,8 @@ async function start() {
     await builder.build()
   }
 
+  app.use(router.routes())
+  /*
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
 
@@ -33,7 +38,7 @@ async function start() {
       })
     })
   })
-
+  */
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,

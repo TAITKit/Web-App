@@ -1,6 +1,7 @@
 <template>
   <v-layout>
     <v-flex text-xs-left>
+      {{ bbb }}
       <li
         v-for="app in apps"
         :key="app.name">
@@ -13,9 +14,11 @@
 <script>
 // import Get from 'mixins/get'
 export default {
-  asyncData(context) {
+  async asyncData(context) {
+    let { app } = context
     // called every time before loading the component
     return {
+      bbb: await app.$axios.$post('api/QAQ'),
       apps: [
         {
           name: 'Discourse',
@@ -23,12 +26,12 @@ export default {
           tags: ['NLP', 'Discourse', 'ParseTree']
         },
         {
-          name: 'Discourse',
+          name: 'Discourse2',
           author: 'HHH',
           tags: ['NLP', 'Discourse', 'ParseTree']
         },
         {
-          name: 'Discourse',
+          name: 'Discourse3',
           author: 'HHH',
           tags: ['NLP', 'Discourse', 'ParseTree']
         },
