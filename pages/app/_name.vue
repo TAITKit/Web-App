@@ -43,10 +43,9 @@
 </template>
 <script>
 export default {
-  async asyncData({ app, route }) {
-    app = (await app.$axios.get(`/api${route.path}`)).data
+  async asyncData(ctx) {
     return {
-      app: app,
+      app: await ctx.app.pageData(ctx),
       text: null,
       result: null
     }

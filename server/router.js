@@ -32,7 +32,7 @@ module.exports = nuxt => {
     })
     .get('/api/app/:name', async (ctx, next) => {
       ctx.status = 200
-      ctx.body = apps.find(i => i.bindName == ctx.params.name)
+      ctx.body = apps.find(i => i.bindName === ctx.params.name)
     })
     .get('/(.*)', async (ctx, next) => {
       ctx.status = 200

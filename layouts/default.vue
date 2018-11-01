@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: true,
+      drawer: false,
       fixed: false,
       items: [
         { icon: 'apps', title: 'Welcome', to: '/' },
@@ -63,7 +63,7 @@ export default {
       ],
       pageContent: { name: '123' },
       miniVariant: false,
-      title: 'Taitk'
+      title: 'Tai Toolkit'
     }
   }
 }

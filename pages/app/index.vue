@@ -18,17 +18,12 @@
   </v-layout>
 </template>
 <script>
-// import Get from 'mixins/get'
 export default {
-  async asyncData({ app, route }) {
-    // called every time before loading the component
-    let apps = (await app.$axios.get(`/api${route.path}`)).data
-    apps = apps.map(a => {
-      a = { route: `/app/${a.bindName}`, ...a }
-      return a
-    })
+  async asyncData(ctx) {
     return {
-      apps: apps
+      apps: (await ctx.app.pageData(ctx)).map(a => {
+        return { route: `/app/${a.bindName}`, ...a }
+      })
     }
   }
 }
