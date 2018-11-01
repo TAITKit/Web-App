@@ -2,6 +2,8 @@ const Router = require('koa-router')
 const KoaBody = require('koa-body')
 const koaBody = KoaBody()
 
+const service = require('./service')
+
 const nuxtRender = nuxt => ctx => new Promise((resolve, reject) => {
   ctx.res.on('close', resolve)
   ctx.res.on('finish', resolve)
@@ -11,23 +13,30 @@ const nuxtRender = nuxt => ctx => new Promise((resolve, reject) => {
   })
 })
 
+// Should from DB
+apps = [
+  { name: 'Jieba Segementation', bindName: 'jieba-service', author: 'Sun Junyi' },
+  { name: 'Discourse', bindName: 'discourse', author: 'calin' }
+]
+
 module.exports = nuxt => {
-  let router = Router()
   let render = nuxtRender(nuxt)
-  router
+  return Router()
+    .post('/api/short/:name', koaBody, async (ctx, next) => {
+      ctx.status = 200
+      ctx.body = await service.start(ctx.params.name, ctx.request.body)
+    })
+    .get('/api/app', async (ctx, next) => {
+      ctx.status = 200
+      ctx.body = apps
+    })
+    .get('/api/app/:name', async (ctx, next) => {
+      ctx.status = 200
+      ctx.body = apps.find(i => i.bindName == ctx.params.name)
+    })
     .get('/(.*)', async (ctx, next) => {
       ctx.status = 200
       await render(ctx)
       await next()
     })
-    .post('/api/:name', koaBody, (ctx, next) => {
-      // :name => ctx.params.name
-      ctx.status = 200
-      ctx.body = ctx.params.name + ctx.request.body 
-    })
-    .get('/api/:name', (ctx, next) => {
-      ctx.status = 200
-      ctx.body = ctx.params.name
-    })
-  return router
 }

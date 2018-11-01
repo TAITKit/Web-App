@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-navigation-drawer
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -27,15 +27,14 @@
       :clipped-left="clipped"
       fixed
       app
+      color="primary"
     >
-      <v-toolbar-side-icon @click="drawer = !drawer" />
-      <v-toolbar-title v-text="title"/>
-      <v-btn
-        right
-        color="normal"
-        align-end>
-        <a>Login</a>
-      </v-btn>
+      <v-toolbar-side-icon
+        class="white--text"
+        @click="drawer = !drawer" />
+      <v-toolbar-title
+        class="white--text"
+        v-text="title"/>
     </v-toolbar>
     <v-content>
       <v-container>

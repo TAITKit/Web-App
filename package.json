@@ -15,10 +15,12 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
+    "ijavascript": "^5.0.20",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
     "koa-router": "^7.4.0",
     "nuxt": "^2.0.0",
+    "tmp": "0.0.33",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {
