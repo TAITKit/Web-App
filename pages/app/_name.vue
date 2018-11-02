@@ -1,23 +1,46 @@
 <template>
   <v-container
     grid-list-md
-    text-xs-center>
+    text-xs-center
+    fluid >
     <v-layout
       row
       wrap>
       <v-flex xs12>
         <v-card>
+          <v-expansion-panel expand-all>
+            <v-expansion-panel-content>
+              <div
+                slot="header"
+                class="headline">{{ app.name }}</div>
+              <v-card-text>{{ app.description }}</v-card-text>
+            </v-expansion-panel-content>
+            <v-expansion-panel-content>
+              <div
+                slot="header"> Config </div>
+              <parameter-document-table :param="app.configs"/>
+            </v-expansion-panel-content>
+            <v-expansion-panel-content>
+              <div
+                slot="header"> Input </div>
+              <parameter-document-table :param="app.inputs"/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-card>
+      </v-flex>
+      <v-flex xs12>
+        <v-card>
           <v-form>
-            <v-card-title primary-title>
-              <h2 class="headline"> {{ app.name }} </h2>
-            </v-card-title>
-            <v-card-text>
-              <v-text-field
-                ref="text"
-                v-model="text"
-                name="text"
-                type="text"
-                label="Input text"/>
+            <v-card-text
+              v-for="(input, i) in app.inputs"
+              :key="i">
+              <v-textarea
+                v-if="input.type === 'text'"
+                v-model="inputs[input.name]"
+                :name="input.name"
+                :label="input.name"
+                :hint="input.description"
+                type="text"/>
             </v-card-text>
             <v-btn
               type="submit"
@@ -42,11 +65,16 @@
   </v-container>
 </template>
 <script>
+import ParameterDocumentTable from '~/components/ParameterDocumentTable.vue'
 export default {
+  components: {
+    ParameterDocumentTable
+  },
   async asyncData(ctx) {
     return {
       app: await ctx.app.pageData(ctx),
-      text: null,
+      inputs: {},
+      configs: {},
       result: null
     }
   },
@@ -54,7 +82,7 @@ export default {
     async submit() {
       this.result = (await this.$axios.post(`/api/short/${this.app.bindName}`, {
         params: {},
-        data: { text: this.text }
+        data: { inputs: this.inputs, configs: this.configs }
       })).data
     }
   }

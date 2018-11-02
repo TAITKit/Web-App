@@ -15,7 +15,38 @@ const nuxtRender = nuxt => ctx => new Promise((resolve, reject) => {
 
 // Should from DB
 apps = [
-  { name: 'Jieba Segementation', bindName: 'jieba-service', author: 'Sun Junyi' },
+  { 
+    name: 'Jieba Segementation',
+    bindName: 'jieba-service',
+    author: 'Sun Junyi',
+    description: 'This is jieba segmentation for chineses made by Sun Junyi.',
+    inputs: [
+      {
+        name: 'text',
+        type: 'text',
+        number: 1,
+        description: 'The chinese text to be segmented'
+      },
+      {
+        name: 'suffix',
+        type: 'text',
+        number: 1,
+        description: 'The suffix of output. Just for testing.'
+      }
+    ],
+    configs: [
+      {
+        name: 'text-config',
+        type: 'text',
+        default: 'default-text'
+      },
+      {
+        name: 'boolean-config',
+        type: 'boolean',
+        default: true
+      }
+    ]
+  },
   { name: 'Discourse', bindName: 'discourse', author: 'calin' }
 ]
 

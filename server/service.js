@@ -20,7 +20,7 @@ module.exports = {
       throw new Error('Service not exists')
     let input = 'input-' + serial + '.tmp'
     let output = 'output-' + serial + '.tmp'
-    await fs.writeFileAsync(input, body.data.text)
+    await fs.writeFileAsync(input, JSON.stringify(body.data))
     return await new Promise ((resolve, reject) => {
       let proc = exec(`python3 ${path} ${input} ${output}`, async (e, out, err) => {
         if (e) {
