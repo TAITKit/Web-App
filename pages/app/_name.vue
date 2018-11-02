@@ -41,6 +41,8 @@
                 :label="input.name"
                 :hint="input.description"
                 type="text"/>
+              <file-upload
+                v-if="input.type === 'file'"/>
             </v-card-text>
             <v-btn
               type="submit"
@@ -66,9 +68,12 @@
 </template>
 <script>
 import ParameterDocumentTable from '~/components/ParameterDocumentTable.vue'
+import FileUpload from '~/components/FileUpload.vue'
+
 export default {
   components: {
-    ParameterDocumentTable
+    ParameterDocumentTable,
+    FileUpload
   },
   async asyncData(ctx) {
     return {

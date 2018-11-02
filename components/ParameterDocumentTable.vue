@@ -20,17 +20,17 @@
               md5>
               <v-card-text
                 class="grey lighten-4">
-                <h4 class="grey--text">Name</h4>
+                <div class="grey--text">Name</div>
                 <h3>{{ p.name }}</h3>
               </v-card-text>
               <v-card-text
                 class="grey lighten-4">
-                <h3 class="grey--text">Default</h3>
+                <div class="grey--text">Default</div>
                 <h3>{{ p.default }}</h3>
               </v-card-text>
               <v-card-text
                 class="grey lighten-4">
-                <h3 class="grey--text">Type</h3>
+                <div class="grey--text">Type</div>
                 <h3>{{ p.type }}</h3>
               </v-card-text>
             </v-flex>
@@ -47,7 +47,12 @@
   </v-container>
 </template>
 <script>
-module.exports = {
-  props: ['param']
+export default {
+  props: {
+    param: {
+      type: Object,
+      default: () => {}
+    }
+  }
 }
 </script>

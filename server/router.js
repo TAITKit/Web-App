@@ -24,13 +24,11 @@ apps = [
       {
         name: 'text',
         type: 'text',
-        number: 1,
         description: 'The chinese text to be segmented'
       },
       {
         name: 'suffix',
         type: 'text',
-        number: 1,
         description: 'The suffix of output. Just for testing.'
       }
     ],
@@ -47,7 +45,26 @@ apps = [
       }
     ]
   },
-  { name: 'Discourse', bindName: 'discourse', author: 'calin' }
+  { name: 'Discourse', bindName: 'discourse', author: 'calin' },
+  {
+    name: 'Computer Vision',
+    bindName: 'computer-vision',
+    author: 'nan',
+    description: 'Computer vision input test: add caption to image',
+    inputs: [
+      {
+        name: 'image',
+        type: 'file',
+        description: 'The base'
+      },
+      {
+        name: 'caption',
+        type: 'text',
+        description: 'The adding caption'
+      }
+    ],
+    configs: []
+  }
 ]
 
 module.exports = nuxt => {
