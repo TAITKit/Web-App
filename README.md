@@ -29,7 +29,8 @@ app = {
   name: {
     brief: '<BRIEF NAME>',
     full: '<FULL NAME>',
-    funtional: '<FUNTIONAL NAME>'
+    funtional: '<FUNTIONAL NAME>',
+    bind: '<BIND NAME>'
   },
   author: {
     people: ['<PEOPLE_1>', ...], // or key to user
@@ -58,15 +59,15 @@ app = {
   },
   format: {
     configs: [
-      { name: '<NAME>', type: '<TYPE>', description: '<DESCRIPTION>' },
+      { name: '<NAME>', type: '<TYPE>', default: '<VALUE>', description: '<DESCRIPTION>' },
       ...
     ],
     inputs: [
-      { name: '<NAME>', type: '<TYPE>', description: '<DESCRIPTION>' },
+      { name: '<NAME>', type: '<TYPE>', default: '<VALUE>', description: '<DESCRIPTION>' },
       ...
     ],
     outputs: [
-      { name: '<NAME>', type: '<TYPE>', description: '<DESCRIPTION>' },
+      { name: '<NAME>', type: '<TYPE>', default: '<VALUE>', description: '<DESCRIPTION>' },
       ...
     ]
   }

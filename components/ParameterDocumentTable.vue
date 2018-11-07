@@ -50,8 +50,8 @@
 export default {
   props: {
     param: {
-      type: Object,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   }
 }

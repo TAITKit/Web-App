@@ -4,13 +4,16 @@ import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify, {
   theme: {
-    primary: colors.teal.base,
-    accent: colors.cyan.base,
-    secondary: colors.cyan.base,
+    primary: colors.teal,
+    accent: colors.cyan,
+    secondary: colors.cyan,
     info: colors.teal.lighten1,
     warning: colors.amber.base,
     error: colors.deepOrange.accent4,
     success: colors.green.accent3
+  },
+  options: {
+    customProperties: true
   }
   /*
   theme: {
