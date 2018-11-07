@@ -9,4 +9,5 @@ s = json.load(open(inputs))
 print(s)
 s = s['inputs']
 with open(outputs, 'w') as f:
-    f.write(' '.join(list(jieba.cut(s['text']))) + s['suffix'])
+    s = ' '.join(list(jieba.cut(s['text']))) + s['suffix']
+    f.write(json.dumps({ 'text': s }))

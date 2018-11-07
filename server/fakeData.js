@@ -113,6 +113,10 @@ let apps = [
         {
           name: 'text',
           type: 'text'
+        },
+        {
+          name: 'text',
+          type: 'text'
         }
       ]
     }

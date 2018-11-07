@@ -47,7 +47,7 @@ export default {
   border-radius: 3px
   border: 1px solid var(--v-primary-lighten2)
   display: inline
-  font-size: 0.6em
+  font-size: 0.2em
   padding: 0px 1px 0px 2px
-  margin: 1px
+  margin: 2px
 </style>

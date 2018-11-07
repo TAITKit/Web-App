@@ -14,7 +14,7 @@
                 slot="header"
                 class="headline">{{ app.name.brief }}</div>
               <v-card-text>
-                <h3>{{ app.name.full }}</h3>
+                <h2>{{ app.name.full }}</h2>
                 <span
                   v-for="(person, i) in app.author.people"
                   :key="i">
@@ -41,15 +41,11 @@
                   nuxt>{{ link.description }}</a>
               </v-card-text>
             </v-expansion-panel-content>
-            <v-expansion-panel-content>
-              <div
-                slot="header"> Config </div>
-              <parameter-document-table :param="app.format.configs"/>
-            </v-expansion-panel-content>
-            <v-expansion-panel-content>
-              <div
-                slot="header"> Input </div>
-              <parameter-document-table :param="app.format.inputs"/>
+            <v-expansion-panel-content
+              v-for="(panel, i) in panels"
+              :key="i">
+              <div slot="header">{{ panel.header }}</div>
+              <parameter-document-table :param="panel.data"/>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-card>
@@ -81,12 +77,16 @@
       </v-flex>
       <v-flex xs12>
         <v-card>
-          <v-card-title primary-title>
-            <h3> Output </h3>
-          </v-card-title>
-          <v-card-text>
-            <h4> {{ result }} </h4>
-          </v-card-text>
+          <template v-for="(output, i) in app.format.outputs">
+            <div :key="i">
+              <v-card-title primary-title>
+                <h3> {{ output.name }} </h3>
+              </v-card-title>
+              <v-card-text v-if="output.type === 'text'">
+                {{ result[output.name] }}
+              </v-card-text>
+            </div>
+          </template>
         </v-card>
       </v-flex>
     </v-layout>
@@ -102,11 +102,17 @@ export default {
     FileUpload
   },
   async asyncData(ctx) {
+    let app = await ctx.app.pageData(ctx)
     return {
-      app: await ctx.app.pageData(ctx),
+      app: app,
       inputs: {},
       configs: {},
-      result: null
+      result: {},
+      panels: [
+        { header: 'Config', data: app.format.configs },
+        { header: 'Input', data: app.format.inputs },
+        { header: 'Output', data: app.format.outputs }
+      ]
     }
   },
   methods: {
