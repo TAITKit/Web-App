@@ -8,7 +8,8 @@
       wrap>
       <v-flex xs12>
         <v-card>
-          <v-expansion-panel expand-all>
+          <v-expansion-panel
+            v-model="expand">
             <v-expansion-panel-content>
               <div
                 slot="header"
@@ -108,6 +109,7 @@ export default {
       inputs: {},
       configs: {},
       result: {},
+      expand: 0,
       panels: [
         { header: 'Config', data: app.format.configs },
         { header: 'Input', data: app.format.inputs },
