@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const config = require('./config')
 
 module.exports = {
   mode: 'universal',
@@ -18,7 +19,9 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
     ]
   },
-
+  env: {
+    baseUrl: config.url
+  },
   /*
   ** Customize the progress-bar color
   */
