@@ -20,7 +20,6 @@ module.exports = {
     ]
   },
   env: {
-    baseUrl: config.url
   },
   /*
   ** Customize the progress-bar color
@@ -53,6 +52,8 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
+    host: config.host,
+    port: config.port
     // See https://github.com/nuxt-community/axios-module#options
   },
 
