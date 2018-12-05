@@ -1,0 +1,55 @@
+{
+  "name": {
+    "abbr": "Jieba",
+    "full": "Jieba Chinese Text Segmentation",
+    "funtional": "Chinese Text Segmentation",
+    "bind": "jieba-service"
+  },
+  "authors": ["Sun Junyi"],
+  "units": [],
+  "categories": ["NLP", "segmentation", "chinese", "HMM"],
+  "abstract": "Built to be the best Python Chinese word segmentation module",
+  "links": [
+    { "url": "https://github.com/fxsjy/jieba", "name": "Github" },
+    { "name": "百度中文词法分析（分词+词性+专名）系统", "url": "https://github.com/baidu/lac" },
+    { "name": "百度FAQ自动问答系统", "url": "https://github.com/baidu/AnyQ" },
+    { "name": "百度情感识别系统", "url": "https://github.com/baidu/Senta" }
+  ],
+  "datasets": [
+  ],
+  "environment": {
+    "platforms": [],
+    "languages": ["Python2", "Python3"],
+    "packages": []
+  },
+  "inputs": [
+    {
+      "name": "text",
+      "type": "text",
+      "description": "欲斷詞的句子。"
+    },
+    {
+      "name": "suffix",
+      "type": "text",
+      "description": "句子的後綴。不會斷詞，僅作 API 測試之用。"
+    }
+  ],
+  "configs": [
+    {
+      "name": "text-config",
+      "type": "text",
+      "default": "default-text"
+    },
+    {
+      "name": "boolean-config",
+      "type": "boolean",
+      "default": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "text",
+      "type": "text"
+    }
+  ]
+}
