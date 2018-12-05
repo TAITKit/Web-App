@@ -13,7 +13,6 @@ const nuxtRender = nuxt => ctx => new Promise((resolve, reject) => {
   })
 })
 let { apps } = require('./fakeData')
-
 module.exports = nuxt => {
   let render = nuxtRender(nuxt)
   return Router()

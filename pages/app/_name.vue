@@ -13,33 +13,33 @@
             <v-expansion-panel-content>
               <div
                 slot="header"
-                class="headline">{{ app.name.brief }}</div>
+                class="headline">{{ app.name.abbr }}</div>
               <v-card-text>
                 <h2>{{ app.name.full }}</h2>
                 <span
-                  v-for="(person, i) in app.author.people"
+                  v-for="(person, i) in app.authors"
                   :key="i">
                   {{ person }}
-                  {{ app.author.people.length-2 > i ? ',' : '' }}
-                  {{ app.author.people.length-2===i ? ' and ' : '' }}
+                  {{ app.authors.length-2 > i ? ',' : '' }}
+                  {{ app.authors.length-2===i ? ' and ' : '' }}
                 </span> <br >
                 <span
-                  v-for="(unit, i) in app.author.units"
-                  :key="i - app.author.units.length">
+                  v-for="(unit, i) in app.units"
+                  :key="i - app.units.length">
                   {{ unit }}
-                  {{ app.author.units.length-2 > i ? ',' : '' }}
-                  {{ app.author.units.length-2===i ? ' and ' : '' }}
+                  {{ app.units.length-2 > i ? ',' : '' }}
+                  {{ app.units.length-2===i ? ' and ' : '' }}
                 </span>
               </v-card-text>
               <v-card-text>
-                {{ app.description.text }} <br >
+                {{ app.abstract }} <br >
                 <a
-                  v-for="(link, i) in app.description.links"
+                  v-for="(link, i) in app.links"
                   :key="i"
                   :href="link.url"
                   style="margin: 0 3px 0 0"
                   flat
-                  nuxt>{{ link.description }}</a>
+                  nuxt>{{ link.name }}</a>
               </v-card-text>
             </v-expansion-panel-content>
             <v-expansion-panel-content
@@ -55,7 +55,7 @@
         <v-card>
           <v-form>
             <v-card-text
-              v-for="(input, i) in app.format.inputs"
+              v-for="(input, i) in app.inputs"
               :key="i">
               <v-textarea
                 v-if="input.type === 'text'"
@@ -78,7 +78,7 @@
       </v-flex>
       <v-flex xs12>
         <v-card>
-          <template v-for="(output, i) in app.format.outputs">
+          <template v-for="(output, i) in app.outputs">
             <div :key="i">
               <v-card-title primary-title>
                 <h3> {{ output.name }} </h3>
@@ -107,13 +107,13 @@ export default {
     return {
       app: app,
       inputs: {},
-      configs: {},
+      parameters: {},
       result: {},
       expand: 0,
       panels: [
-        { header: 'Config', data: app.format.configs },
-        { header: 'Input', data: app.format.inputs },
-        { header: 'Output', data: app.format.outputs }
+        { header: 'Input', data: app.inputs },
+        { header: 'Output', data: app.outputs },
+        { header: 'Parameter', data: app.parameters }
       ]
     }
   },
@@ -123,7 +123,7 @@ export default {
         `/api/short/${this.app.name.bind}`,
         {
           params: {},
-          data: { inputs: this.inputs, configs: this.configs }
+          data: { inputs: this.inputs, configs: this.parameters }
         }
       )).data
     }
