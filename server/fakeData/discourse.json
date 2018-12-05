@@ -1,4 +1,5 @@
 {
+  "apiVersion": "1.0",
   "name": {
     "abbr": "Discourse",
     "full": "A Unified RvNN Framework for End-to-End Chinese Discourse Parsing",
